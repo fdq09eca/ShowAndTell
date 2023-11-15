@@ -12,7 +12,6 @@ import Logo from "./Logo.vue";
 import LonLatBox from "./LonLatBox.vue";
 import ScaleBox from "./ScaleBox.vue";
 
-
 export default {
   components: {
     Logo,
@@ -52,8 +51,6 @@ export default {
 </script>
 
 <style scoped>
-@import "https://js.arcgis.com/4.28/@arcgis/core/assets/esri/themes/light/main.css";
-
 #viewDiv {
   flex: 1;
   border: rgb(38, 38, 37) solid 2px;

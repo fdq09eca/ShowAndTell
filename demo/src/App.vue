@@ -17,6 +17,7 @@ export default {
 </template>
 
 <style>
+@import "https://js.arcgis.com/4.28/@arcgis/core/assets/esri/themes/light/main.css";
 html,
 body {
   margin: 0;
