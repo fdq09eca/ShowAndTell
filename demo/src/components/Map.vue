@@ -1,8 +1,8 @@
 <template>
   <div id="viewDiv">
-    <Logo />
-    <LonLatBox />
-    <ScaleBox />
+    <Logo :mapObject="this.mapObject" />
+    <LonLatBox :mapObject="this.mapObject" />
+    <ScaleBox :mapObject="this.mapObject" />
   </div>
 </template>
 
@@ -23,24 +23,29 @@ export default {
     const _mapStore = useMapStore();
 
     return {
-      name: "map",
+      mapObject: null,
       mapStore: _mapStore,
     };
   },
 
-  methods: {
-    doIt() {
-      console.info("Map.vue::doIt()");
-      console.info("this.mapStore.view.zoom: ", this.mapStore.view.zoom);
+  computed: {
+    map() {
+      return this.mapObject?.map;
+    },
+    view() {
+      return this.mapObject?.view;
+    },
+    mapObj_id() {
+      return this.mapObject?.id;
     },
   },
 
-  mounted() {
-    this.mapStore.onMount(this.$el);
+  beforeMount() {
+    this.mapObject = this.mapStore.init_mapObject();
+  },
 
-    this.mapStore.view.when(() => {
-      this.doIt();
-    });
+  mounted() {
+    this.mapStore.onMount(this.$el, this.mapObj_id);
   },
 };
 </script>
@@ -50,5 +55,6 @@ export default {
 
 #viewDiv {
   flex: 1;
+  border: rgb(38, 38, 37) solid 2px;
 }
 </style>

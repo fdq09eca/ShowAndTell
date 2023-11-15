@@ -1,24 +1,24 @@
 <template>
-  <div id="lat-lon-box" style="background-color: ivory; padding: 2px">
-    <p style="margin: 0; padding: 0;">
+  <div id="lat-lon-box">
+    <p class="lat-lon-val">
       lat: <b>{{ this.lat }}</b>
     </p>
-    <p style="margin: 0; padding: 0">
+    <p class="lat-lon-val">
       lon: <b>{{ this.lon }}</b>
     </p>
   </div>
 </template>
 
 <script>
-import { useMapStore } from "../stores/MapStore";
 export default {
+  props: {
+    mapObject: Object,
+  },
   data() {
-    const _mapStore = useMapStore();
     const _lat = "n/a";
     const _lon = "n/a";
 
     return {
-      mapStore: _mapStore,
       lat: _lat,
       lon: _lon,
     };
@@ -33,7 +33,7 @@ export default {
 
   mounted() {
     console.log("LonLatBox.vue::mounted()");
-    const view = this.mapStore.view;
+    const view = this.mapObject.view;
     view.ui.add(this.$el, "top-right");
 
     // setup event callback
@@ -44,3 +44,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#lat-lon-box {
+  background-color: ivory;
+  padding: 2px;
+}
+
+.lat-lon-val {
+  margin: 0;
+  padding: 0;
+}
+</style>
+```

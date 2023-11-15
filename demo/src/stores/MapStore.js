@@ -1,36 +1,57 @@
 import { defineStore } from "pinia";
 import Map from "@arcgis/core/Map.js";
 import MapView from "@arcgis/core/views/MapView.js";
+import { v4 as uuid } from "uuid";
 
 export const useMapStore = defineStore("mapStore", {
   state() {
-    const map = new Map({
-      basemap: "topo-vector",
-    });
-
-    const view = new MapView({
-      map: map,
-      zoom: 6,
-      center: [-2.244, 53.483], // lon, lat
-    });
-
-    return { map: map, view: view };
+    const mapObjects = [];
+    return { mapObjects: mapObjects };
   },
 
-  getters: {
-    // map() {
-    //   console.log("mapStore::getters::map");
-    //   return this._map;
-    // },
-  },
+  getters: {},
 
   actions: {
-    init_mapView(container) {
-      this.view.container = container;
+    get_mapObject(id) {
+      if (id == null) {
+        throw new Error("mapStore::get_mapObject(id) id is null");
+      }
+      const mo = this.mapObjects.find((obj) => obj.id === id);
+
+      if (mo == null) {
+        throw new Error(`mapStore::get_mapObject(id) id ${id} not found`);
+      }
+
+      return mo;
     },
 
-    onMount(container) {
-      this.init_mapView(container);
+    init_mapObject(id = uuid()) {
+      const map = new Map({
+        basemap: "topo-vector",
+      });
+
+      const view = new MapView({
+        container: null,
+        map: map,
+        center: [-2.28, 53.474], // longitude, latitude
+        zoom: 6,
+      });
+
+      const mapObj = { id: id, map: map, view: view };
+
+      this.mapObjects.push(mapObj);
+      console.log("mapObjects lenght: ", this.mapObjects.length);
+      return mapObj;
+    },
+
+    onMount(container_, id) {
+      const v = this.get_mapObject(id)?.view;
+
+      if (v == null) {
+        throw new Error(`view is null`);
+      }
+
+      v.container = container_;
       this.doSomething();
     },
 

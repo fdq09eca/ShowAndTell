@@ -11,11 +11,12 @@ export default {
 <template>
   <div id="app-div">
     <Map></Map>
+    <Map></Map>
+    <Map></Map>
   </div>
 </template>
 
 <style>
-
 html,
 body {
   margin: 0;

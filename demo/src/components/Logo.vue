@@ -9,12 +9,13 @@
 </template>
 
 <script>
-import { useMapStore } from "../stores/MapStore";
-
 export default {
+  props: { mapObject: Object },
+
   mounted() {
-    const view = useMapStore().view;
-    view.ui.add(this.$el, "bottom-right");
+    console.info("Logo.vue::mounted()");
+    console.info("this.mapObject: ", this.mapObject);
+    this.mapObject?.view.ui.add(this.$el, "bottom-right");
   },
 };
 </script>

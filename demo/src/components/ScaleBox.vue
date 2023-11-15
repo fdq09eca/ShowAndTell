@@ -8,11 +8,13 @@
 </template>
 
 <script>
-import { useMapStore } from "../stores/MapStore";
 import ScaleBar from "@arcgis/core/widgets/ScaleBar";
 import * as reactiveUtils from "@arcgis/core/core/reactiveUtils.js";
 
 export default {
+  props: {
+    mapObject: Object,
+  },
   data() {
     return { ratio: "n/a" };
   },
@@ -25,7 +27,7 @@ export default {
   },
 
   mounted() {
-    const view = useMapStore().view;
+    const view = this.mapObject.view;
 
     reactiveUtils
       .whenOnce(() => view.ready)
