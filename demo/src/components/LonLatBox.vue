@@ -32,7 +32,6 @@ export default {
   },
 
   mounted() {
-    console.log("LonLatBox.vue::mounted()");
     const view = this.mapObject.view;
     view.ui.add(this.$el, "top-right");
 

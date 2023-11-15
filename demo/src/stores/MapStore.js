@@ -40,7 +40,6 @@ export const useMapStore = defineStore("mapStore", {
       const mapObj = { id: id, map: map, view: view };
 
       this.mapObjects.push(mapObj);
-      console.log("mapObjects lenght: ", this.mapObjects.length);
       return mapObj;
     },
 
@@ -56,7 +55,7 @@ export const useMapStore = defineStore("mapStore", {
     },
 
     doSomething() {
-      console.log("mapStore::doSomething");
+      // console.log("mapStore::doSomething");
     },
   },
 });

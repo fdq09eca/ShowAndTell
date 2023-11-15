@@ -13,8 +13,6 @@ export default {
   props: { mapObject: Object },
 
   mounted() {
-    console.info("Logo.vue::mounted()");
-    console.info("this.mapObject: ", this.mapObject);
     this.mapObject?.view.ui.add(this.$el, "bottom-right");
   },
 };

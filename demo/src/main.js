@@ -4,7 +4,7 @@ import { createPinia, PiniaVuePlugin } from "pinia";
 import VueCompositionApi from "@vue/composition-api";
 import esriConfig from "@arcgis/core/config.js";
 
-esriConfig.apiKey = import.meta.env.VITE_ESRIJS_API_KEY;
+esriConfig.apiKey = import.meta.env.VITE_ESRI_API_KEY;
 
 Vue.use(VueCompositionApi);
 Vue.use(PiniaVuePlugin);
