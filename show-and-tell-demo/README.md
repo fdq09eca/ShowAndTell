@@ -10,7 +10,10 @@ The template uses [`Vue2`][vue2] option API and [`Pinia`][pinia] for state manag
 
 ## How to run
 
-> **MAKE SURE YOU [SET YOUR ESRI API KEY](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/tutorials/create-and-manage-an-api-key/) IN [`.env`](./src/.env)**
+> **MAKE SURE YOU [SET YOUR ESRI API KEY](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/tutorials/create-and-manage-an-api-key/) IN `.env.local`** (create one if you do not)
+
+you should have the following folder structure
+![folder-structure](folder-structure.png)
 
 ```bash
 npm i
@@ -30,7 +33,8 @@ npm run preview
   - `working-directory: ./<your-gui-project-folder>/`
   - `cache-dependency-path: './<your-gui-project-folder>/package-lock.json'`
   - `path: './<your-gui-project-folder>/dist'`
-- update [`vite.config.js](vite.config.js) base
+- update [`vite.config.js](./vite.config.js) base
   - `base: "/<your-repo-name>/"`
 - go to your `github repo` -> `Setting` -> `Pages` -> `Build and Deployment` -> `Source` -> `GitHubAction`
 
+![github-page-deploy](github-page-deploy.png)
