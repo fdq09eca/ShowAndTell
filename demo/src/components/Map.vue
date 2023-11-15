@@ -49,6 +49,6 @@ export default {
 @import "https://js.arcgis.com/4.28/@arcgis/core/assets/esri/themes/light/main.css";
 
 #viewDiv {
-  height: 97.5vh;
+  flex: 1;
 }
 </style>

@@ -9,9 +9,23 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div id="app-div">
     <Map></Map>
   </div>
 </template>
 
-<style scoped></style>
+<style>
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app-div {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+}
+</style>
