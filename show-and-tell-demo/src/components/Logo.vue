@@ -1,6 +1,10 @@
 <template>
   <div>
-    <img src="/vite.svg" alt="vite_logo" />
+    <img
+      src="https://assets.manchester.ac.uk/logos/hi-res/TAB_UNI_MAIN_logo/Coloured_backgrounds/TAB_col_background.png"
+      alt="logo"
+      width="100"
+    />
   </div>
 </template>
 

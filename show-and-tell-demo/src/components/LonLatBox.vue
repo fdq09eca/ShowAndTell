@@ -1,9 +1,9 @@
 <template>
-  <div id="lat-lon-box">
-    <p>
+  <div id="lat-lon-box" style="background-color: ivory; padding: 2px">
+    <p style="margin: 0; padding: 0;">
       lat: <b>{{ this.lat }}</b>
     </p>
-    <p>
+    <p style="margin: 0; padding: 0">
       lon: <b>{{ this.lon }}</b>
     </p>
   </div>
@@ -34,15 +34,12 @@ export default {
   mounted() {
     console.log("LonLatBox.vue::mounted()");
     const view = this.mapStore.view;
+    view.ui.add(this.$el, "top-right");
 
+    // setup event callback
     view.on("pointer-move", (event) => {
       const mapPoint = view.toMap({ x: event.x, y: event.y });
-
       this.setLatLon(mapPoint);
-    });
-
-    view.when(() => {
-      view.ui.add(this.$el, "top-right");
     });
   },
 };

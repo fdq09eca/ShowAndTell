@@ -1,6 +1,6 @@
 <template>
   <div id="viewDiv">
-    <ViteLogo />
+    <Logo />
     <LonLatBox />
     <ScaleBox />
   </div>
@@ -8,13 +8,13 @@
 
 <script>
 import { useMapStore } from "../stores/MapStore";
-import ViteLogo from "./ViteLogo.vue";
+import Logo from "./Logo.vue";
 import LonLatBox from "./LonLatBox.vue";
 import ScaleBox from "./ScaleBox.vue";
 
 export default {
   components: {
-    ViteLogo,
+    Logo,
     LonLatBox,
     ScaleBox,
   },
