@@ -11,6 +11,9 @@ The template uses [`Vue2`][vue2] option API and [`Pinia`][pinia] for state manag
 ## How to run
 
 > **MAKE SURE YOU [SET YOUR ESRI API KEY](https://developers.arcgis.com/documentation/mapping-apis-and-services/security/tutorials/create-and-manage-an-api-key/) IN `.env.local`** (create one if you do not)
+>
+> in `.env.local` add the following line
+> `VITE_ESRI_API_KEY="YOUR_API_KEY"`
 
 you should have the following folder structure
 ![folder-structure](folder-structure.png)
