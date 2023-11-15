@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import Map from "@arcgis/core/Map.js";
 import MapView from "@arcgis/core/views/MapView.js";
 import { v4 as uuid } from "uuid";
+import * as reactiveUtils from "@arcgis/core/core/reactiveUtils.js";
 
 export const useMapStore = defineStore("mapStore", {
   state() {
@@ -38,6 +39,24 @@ export const useMapStore = defineStore("mapStore", {
       });
 
       const mapObj = { id: id, map: map, view: view };
+
+      reactiveUtils.on(
+        () => view,
+        "drag",
+        (event) => {
+          const dragState = event.action;
+          if (dragState === "update") {
+            this.syncMaps(mapObj);
+          }
+        }
+      );
+
+      reactiveUtils.watch(
+        () => view.zoom,
+        (zoom) => {
+          this.syncMaps(mapObj);
+        }
+      );
 
       this.mapObjects.push(mapObj);
       return mapObj;
