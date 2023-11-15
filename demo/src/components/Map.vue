@@ -11,6 +11,7 @@ import { useMapStore } from "../stores/MapStore";
 import Logo from "./Logo.vue";
 import LonLatBox from "./LonLatBox.vue";
 import ScaleBox from "./ScaleBox.vue";
+import * as reactiveUtils from "@arcgis/core/core/reactiveUtils.js";
 
 export default {
   components: {
@@ -42,10 +43,27 @@ export default {
 
   beforeMount() {
     this.mapObject = this.mapStore.init_mapObject();
+    reactiveUtils.on(
+      () => this.view,
+      "drag",
+      (event) => {
+        const dragState = event.action;
+        if (dragState === "update") {
+          useMapStore().syncMaps(this.mapObject);
+        }
+      }
+    );
+
+    reactiveUtils.watch(
+      () => this.view?.zoom,
+      (zoom) => {
+        useMapStore().syncMaps(this.mapObject);
+      }
+    );
   },
 
   mounted() {
-    this.mapStore.onMount(this.$el, this.mapObj_id);
+    this.mapObject.view.container = this.$el;
   },
 };
 </script>

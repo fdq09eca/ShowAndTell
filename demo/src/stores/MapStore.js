@@ -43,19 +43,13 @@ export const useMapStore = defineStore("mapStore", {
       return mapObj;
     },
 
-    onMount(container_, id) {
-      const v = this.get_mapObject(id)?.view;
-
-      if (v == null) {
-        throw new Error(`view is null`);
-      }
-
-      v.container = container_;
-      this.doSomething();
-    },
-
-    doSomething() {
-      // console.log("mapStore::doSomething");
+    syncMaps(targetMapObj) {
+      this.mapObjects
+        .filter((mo) => mo !== targetMapObj)
+        .forEach((mo) => {
+          mo.view.extent = targetMapObj.view.extent;
+          mo.view.zoom = targetMapObj.view.zoom;
+        });
     },
   },
 });
