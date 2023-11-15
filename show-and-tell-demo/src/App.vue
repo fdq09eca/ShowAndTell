@@ -1,30 +1,24 @@
+<!-- <script>
+import Map from "./components/Map.vue";
+import esriConfig from "@arcgis/core/config.js";
+esriConfig.apiKey =
+  "AAPK71940b33b03d4e4c99613292f1444a9fUeF221r0E9WRtGtNDyA45xaDnza7VTZHfM5epuWxZKcXHLMDPSeKutOwDdmPCifc";
+export default {
+  components: {
+    Map,
+  },
+};
+</script> -->
+
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Map from "./components/Map.vue";
+import esriConfig from "@arcgis/core/config.js";
+
+esriConfig.apiKey = import.meta.env.VITE_ESRI_API_KEY;
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <Map />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>
