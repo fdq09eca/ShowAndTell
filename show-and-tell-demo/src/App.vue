@@ -1,12 +1,9 @@
 <script>
 import Map from "./components/Map.vue";
-import HelloWorld from "./components/HelloWorld.vue";
-import ViteLogo from "./components/ViteLogo.vue";
+
 export default {
   components: {
     Map,
-    HelloWorld,
-    ViteLogo,
   },
 };
 </script>
@@ -14,7 +11,6 @@ export default {
 <template>
   <div>
     <Map></Map>
-    <ViteLogo />
   </div>
 </template>
 

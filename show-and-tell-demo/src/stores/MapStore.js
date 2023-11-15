@@ -10,8 +10,8 @@ export const useMapStore = defineStore("mapStore", {
 
     const view = new MapView({
       map: map,
-      zoom: 4,
-      center: [-98, 35],
+      zoom: 6,
+      center: [-2.244, 53.483], // lon, lat
     });
 
     return { map: map, view: view };

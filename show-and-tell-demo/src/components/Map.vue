@@ -1,11 +1,24 @@
 <template>
-  <div id="viewDiv"></div>
+  <div id="viewDiv">
+    <ViteLogo />
+    <LonLatBox />
+    <ScaleBox />
+  </div>
 </template>
 
 <script>
 import { useMapStore } from "../stores/MapStore";
+import ViteLogo from "./ViteLogo.vue";
+import LonLatBox from "./LonLatBox.vue";
+import ScaleBox from "./ScaleBox.vue";
 
 export default {
+  components: {
+    ViteLogo,
+    LonLatBox,
+    ScaleBox,
+  },
+
   data() {
     const _mapStore = useMapStore();
 
