@@ -1,8 +1,16 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import { createVuePlugin as vue } from "vite-plugin-vue2";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/ShowAndTell/',
+  base: "/ShowAndTell/",
   plugins: [vue()],
-})
+  build: {
+    target: "esnext", // you can also use 'es2020' here
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: "esnext", // you can also use 'es2020' here
+    },
+  },
+});

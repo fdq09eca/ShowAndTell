@@ -1,24 +1,21 @@
-<!-- <script>
+<script>
 import Map from "./components/Map.vue";
-import esriConfig from "@arcgis/core/config.js";
-esriConfig.apiKey =
-  "AAPK71940b33b03d4e4c99613292f1444a9fUeF221r0E9WRtGtNDyA45xaDnza7VTZHfM5epuWxZKcXHLMDPSeKutOwDdmPCifc";
+import HelloWorld from "./components/HelloWorld.vue";
+import ViteLogo from "./components/ViteLogo.vue";
 export default {
   components: {
     Map,
+    HelloWorld,
+    ViteLogo,
   },
 };
-</script> -->
-
-<script setup>
-import Map from "./components/Map.vue";
-import esriConfig from "@arcgis/core/config.js";
-
-esriConfig.apiKey = import.meta.env.VITE_ESRI_API_KEY;
 </script>
 
 <template>
-  <Map />
+  <div>
+    <Map></Map>
+    <ViteLogo />
+  </div>
 </template>
 
 <style scoped></style>

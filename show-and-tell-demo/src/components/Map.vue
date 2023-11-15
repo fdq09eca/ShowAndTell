@@ -3,45 +3,36 @@
 </template>
 
 <script>
-import Map from "@arcgis/core/Map.js";
-import MapView from "@arcgis/core/views/MapView.js";
-
+import { useMapStore } from "../stores/MapStore";
 
 export default {
   data() {
+    const _mapStore = useMapStore();
+
     return {
       name: "map",
+      mapStore: _mapStore,
     };
   },
-  
+
   methods: {
     doIt() {
-      console.log(`Hello ${this.name}`);
+      console.info("Map.vue::doIt()");
+      console.info("this.mapStore.view.zoom: ", this.mapStore.view.zoom);
     },
   },
-  
+
   mounted() {
-    
+    this.mapStore.onMount(this.$el);
 
-    const map = new Map({
-      basemap: "topo-vector",
-    });
-
-    const view = new MapView({
-      container: "viewDiv",
-      map: map,
-      zoom: 4,
-      center: [-98, 35],
-    });
-
-    view.when(() => {
+    this.mapStore.view.when(() => {
       this.doIt();
     });
   },
 };
 </script>
 
-<style>
+<style scoped>
 @import "https://js.arcgis.com/4.28/@arcgis/core/assets/esri/themes/light/main.css";
 
 #viewDiv {
