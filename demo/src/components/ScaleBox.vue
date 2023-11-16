@@ -16,7 +16,7 @@ export default {
     mapObject: Object,
   },
   data() {
-    return { ratio: "n/a" };
+    return { ratio: "n/a", scaleBar: null };
   },
 
   methods: {
@@ -28,6 +28,14 @@ export default {
 
   mounted() {
     const view = this.mapObject.view;
+
+    const scaleBar = new ScaleBar({
+      view: view,
+      unit: "dual",
+      container: this.$el.querySelector("#scale-widget"),
+    });
+
+    view.ui.add(this.$el, "bottom-left");
 
     reactiveUtils
       .whenOnce(() => view.ready)
@@ -41,14 +49,6 @@ export default {
         this.updateRatio(view);
       }
     );
-
-    const scaleBar = new ScaleBar({
-      view: view,
-      unit: "dual",
-      container: "scale-widget",
-    });
-
-    view.ui.add(this.$el, "bottom-left");
   },
 };
 </script>
