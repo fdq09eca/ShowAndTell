@@ -15,7 +15,7 @@ export default {
   components: {
     Map,
   },
-  
+
   methods: {
     addMap() {
       useMapStore().createMapComponent(this.$el);
@@ -62,7 +62,7 @@ button {
   opacity: 0.5;
 }
 
-button:hover{
+button:hover {
   opacity: 1;
 }
 
@@ -72,13 +72,9 @@ button:hover{
   font-weight: bold;
 }
 
-
-
 #add-map-btn {
   background-color: blue;
   color: white;
   font-weight: bold;
 }
-
-
 </style>

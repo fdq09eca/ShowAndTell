@@ -48,7 +48,7 @@ export const useMapStore = defineStore("mapStore", {
         (event) => {
           const dragState = event.action;
           if (dragState === "update") {
-            this.syncMaps(mapObj);
+            this.sync_mapObjects(mapObj);
           }
         }
       );
@@ -56,7 +56,7 @@ export const useMapStore = defineStore("mapStore", {
       reactiveUtils.watch(
         () => view.zoom,
         (zoom) => {
-          this.syncMaps(mapObj);
+          this.sync_mapObjects(mapObj);
         }
       );
 
@@ -78,19 +78,22 @@ export const useMapStore = defineStore("mapStore", {
       } else {
         mapObj = this.get_mapObject(id);
       }
-
+      
       this.mapObjects = this.mapObjects.filter((mo) => mo !== mapObj);
+      
       mapObj?.view.container.remove();
       mapObj?.view.destroy();
       mapObj?.map.destroy();
     },
 
-    syncMaps(targetMapObj) {
+    sync_mapObjects(src) {
       this.mapObjects
-        .filter((mo) => mo !== targetMapObj)
-        .forEach((mo) => {
-          mo.view.extent = targetMapObj.view.extent;
-          mo.view.zoom = targetMapObj.view.zoom;
+        .filter((dst) => dst !== src)
+        .forEach((dst) => {
+          dst.view.extent = src.view.extent;
+          dst.view.zoom = src.view.zoom;
+          dst.view.scale = src.view.scale;
+          dst.view.rotation = src.view.rotation;
         });
     },
   },
