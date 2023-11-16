@@ -15,10 +15,7 @@ export default {
   components: {
     Map,
   },
-  data() {
-    return {};
-  },
-
+  
   methods: {
     addMap() {
       useMapStore().createMapComponent(this.$el);
@@ -51,18 +48,22 @@ body {
   position: absolute;
   top: 90vh;
   left: 40vw;
-  z-index: 1000;
+  z-index: 99;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 250px;
 }
 
+button {
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+}
+
 #remove-map-btn {
   background-color: red;
   color: white;
-  width: 100px;
-  height: 50px;
   font-weight: bold;
 }
 
@@ -75,8 +76,6 @@ body {
 #add-map-btn {
   background-color: blue;
   color: white;
-  width: 100px;
-  height: 50px;
   font-weight: bold;
 }
 
