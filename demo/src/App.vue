@@ -46,7 +46,7 @@ body {
 
 #overlay-btns-div {
   position: absolute;
-  top: 90vh;
+  top: 85vh;
   left: 40vw;
   z-index: 99;
   display: flex;
