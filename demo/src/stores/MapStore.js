@@ -3,6 +3,8 @@ import Map from "@arcgis/core/Map.js";
 import MapView from "@arcgis/core/views/MapView.js";
 import { v4 as uuid } from "uuid";
 import * as reactiveUtils from "@arcgis/core/core/reactiveUtils.js";
+import Vue from "vue";
+import MapComponent from "../components/Map.vue";
 
 export const useMapStore = defineStore("mapStore", {
   state() {
@@ -60,6 +62,27 @@ export const useMapStore = defineStore("mapStore", {
 
       this.mapObjects.push(mapObj);
       return mapObj;
+    },
+
+    createMapComponent(container = null) {
+      const MapComponentClass = Vue.extend(MapComponent);
+      const new_map = new MapComponentClass();
+      new_map.$mount();
+      container.appendChild(new_map.$el);
+    },
+
+    removeMap(id = null) {
+      let mapObj = null;
+      if (id == null) {
+        mapObj = this.mapObjects.at(-1);
+      } else {
+        mapObj = this.get_mapObject(id);
+      }
+
+      this.mapObjects = this.mapObjects.filter((mo) => mo !== mapObj);
+      mapObj?.view.container.remove();
+      mapObj?.view.destroy();
+      mapObj?.map.destroy();
     },
 
     syncMaps(targetMapObj) {

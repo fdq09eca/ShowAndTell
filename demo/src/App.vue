@@ -1,20 +1,35 @@
+<template>
+  <div id="app-div">
+    <div id="overlay-btns-div">
+      <button id="add-map-btn" @click="this.addMap">Add Map</button>
+      <button id="remove-map-btn" @click="this.removeMap">Remove Map</button>
+    </div>
+    <Map></Map>
+  </div>
+</template>
+
 <script>
 import Map from "./components/Map.vue";
-
+import { useMapStore } from "./stores/MapStore";
 export default {
   components: {
     Map,
   },
+  data() {
+    return {};
+  },
+
+  methods: {
+    addMap() {
+      useMapStore().createMapComponent(this.$el);
+    },
+
+    removeMap() {
+      useMapStore().removeMap();
+    },
+  },
 };
 </script>
-
-<template>
-  <div id="app-div">
-    <Map></Map>
-    <Map></Map>
-    <Map></Map>
-  </div>
-</template>
 
 <style>
 @import "https://js.arcgis.com/4.28/@arcgis/core/assets/esri/themes/light/main.css";
@@ -29,5 +44,45 @@ body {
   flex-direction: row;
   height: 100vh;
   width: 100vw;
+  position: relative;
+}
+
+#overlay-btns-div {
+  position: absolute;
+  top: 90vh;
+  left: 40vw;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 250px;
+}
+
+#remove-map-btn {
+  background-color: red;
+  color: white;
+  width: 100px;
+  height: 50px;
+  font-weight: bold;
+}
+
+#remove-map-btn:hover {
+  background-color: lightpink;
+  color: darkred;
+  font-weight: bolder;
+}
+
+#add-map-btn {
+  background-color: blue;
+  color: white;
+  width: 100px;
+  height: 50px;
+  font-weight: bold;
+}
+
+#add-map-btn:hover {
+  background-color: cornflowerblue;
+  color: darkblue;
+  font-weight: bolder;
 }
 </style>
