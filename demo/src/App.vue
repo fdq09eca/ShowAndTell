@@ -59,6 +59,11 @@ button {
   width: 100px;
   height: 50px;
   border-radius: 10px;
+  opacity: 0.5;
+}
+
+button:hover{
+  opacity: 1;
 }
 
 #remove-map-btn {
@@ -67,11 +72,7 @@ button {
   font-weight: bold;
 }
 
-#remove-map-btn:hover {
-  background-color: lightpink;
-  color: darkred;
-  font-weight: bolder;
-}
+
 
 #add-map-btn {
   background-color: blue;
@@ -79,9 +80,5 @@ button {
   font-weight: bold;
 }
 
-#add-map-btn:hover {
-  background-color: cornflowerblue;
-  color: darkblue;
-  font-weight: bolder;
-}
+
 </style>
